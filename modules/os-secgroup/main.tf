@@ -1,9 +1,6 @@
-variable name_prefix {}
-variable secgroup_name {}
-
 resource "openstack_compute_secgroup_v2" "created" {
-  # create only if not specified in var.secgroup_name
-  count       = "${var.secgroup_name == "" ? 1 : 0}"
+  # create only if var.existing_secgroup_name is empty
+  count       = "${var.existing_secgroup_name == "" ? 1 : 0}"
   name        = "${var.name_prefix}-secgroup"
   description = "The automatically created secgroup for ${var.name_prefix}"
 
@@ -41,15 +38,4 @@ resource "openstack_compute_secgroup_v2" "created" {
     ip_protocol = "udp"
     self        = "true"
   }
-}
-
-output "secgroup_name" {
-  # The join() hack is required because currently the ternary operator
-  # evaluates the expressions on both branches of the condition before
-  # returning a value. When providing and external VPC, the template VPC
-  # resource gets a count of zero which triggers an evaluation error.
-  #
-  # This is tracked upstream: https://github.com/hashicorp/hil/issues/50
-  #
-  value = "${ var.secgroup_name == "" ? join(" ", openstack_compute_secgroup_v2.created.*.name) : var.secgroup_name }"
 }

@@ -1,0 +1,17 @@
+---
+language: python # (Ansible)
+
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    - TERRAFORM_VERSION=0.11.7
+    - SHELLCHECK_VERSION=v0.4.6
+    - SHFMT_VERSION=latest
+    - YAMLLINT_VERSION=1.8.1
+
+install: test/travis_install.sh
+script: test/travis_script.sh
