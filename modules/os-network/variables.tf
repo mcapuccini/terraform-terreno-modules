@@ -4,6 +4,7 @@ variable name_prefix {
 
 variable existing_network_name {
   description = "Name of an existing network (optional, if set no network will be created and this name will be outputted)"
+  default = ""
 }
 
 variable subnet_cidr {

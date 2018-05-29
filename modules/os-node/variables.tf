@@ -37,7 +37,8 @@ variable assign_floating_ip {
 }
 
 variable floating_ip_pool {
-  description = "Name of the floating IP pool"
+  description = "Name of the floating IP pool (optional if assign_floating_ip is false)"
+  default = ""
 }
 
 variable extra_disk_size {
@@ -46,5 +47,5 @@ variable extra_disk_size {
 }
 
 variable bootstrap_script {
-  description = "Path to a script to be executed at boot time (cloud-init user-data)"
+  description = "Script to be executed at boot time (cloud-init user-data)"
 }
