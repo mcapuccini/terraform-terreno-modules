@@ -15,8 +15,8 @@ checkModule() {
 # Check root module
 checkModule "$PWD"
 
-# Check each submodule
-for module_dir in $(find modules -type d | tail -n +2); do
+# Check each submodule/example
+for module_dir in $(find modules examples -type d -maxdepth 1 -mindepth 1); do
   checkModule "$PWD/$module_dir"
 done
 
