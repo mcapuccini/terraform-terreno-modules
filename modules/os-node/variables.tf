@@ -38,7 +38,7 @@ variable assign_floating_ip {
 
 variable floating_ip_pool {
   description = "Name of the floating IP pool (optional if assign_floating_ip is false)"
-  default = ""
+  default     = ""
 }
 
 variable extra_disk_size {

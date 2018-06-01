@@ -1,6 +1,6 @@
 variable cluster_prefix {
   description = "Prefix for the cluster resources name"
-  default = "spark"
+  default     = "spark"
 }
 
 variable public_key {
@@ -25,7 +25,7 @@ variable master_flavor_name {
 
 variable spark_docker_image {
   description = "Spark Docker image"
-  default = "gettyimages/spark:2.2.1-hadoop-2.7"
+  default     = "gettyimages/spark:2.2.1-hadoop-2.7"
 }
 
 variable worker_flavor_name {
@@ -38,5 +38,5 @@ variable workers_count {
 
 variable workers_floating_ip {
   description = "If true a floating IP will be attached to each worker"
-  default = false
+  default     = false
 }
